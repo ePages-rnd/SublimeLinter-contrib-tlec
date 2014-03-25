@@ -17,7 +17,7 @@ class Tlec(Linter):
 
     """Provides an interface to tlec."""
 
-    syntax = 'html'
+    syntax = ('html', 'tle')
     cmd = 'tlec @'
     regex = r'(?P<message>.+?) at line (?P<line>\d+)(, near (?P<near>.+?))?'
     error_stream = util.STREAM_BOTH
