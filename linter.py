@@ -18,9 +18,9 @@ class Tlec(Linter):
     """Provides an interface to tlec."""
 
     def cmd(self):
-        return [self.executable_path, sublime.load_settings('Epages6.sublime-settings').get('path'), '--vm=' + self.view.settings().get('ep6_vm'), '--lint', '@'];
+        return [self.executable_path, sublime.packages_path() +  '/Epages6/ep6-tools.py', '--vm', self.view.settings().get('ep6vm')['vm'], '--lint', '--file', self.view.file_name(), '--user', 'root', '--password', 'qwert6', '--ignore-me', '@'];
 
-    executable = 'perl'
+    executable = 'python3'
     syntax = ('html', 'tle')
     regex = r'(?P<message>.+?) at line (?P<line>\d+)(, near (?P<near>.+?))?'
     error_stream = util.STREAM_BOTH
